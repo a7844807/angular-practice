@@ -30,7 +30,7 @@ export class PraComponent implements OnInit {
       discountInDollar: ''
     }
   ];
-  urlLink: string = 'assets/干炒牛河.jpg';
+  urlLink: string = '';
   selectFile(event:any){
     if (event.target.files){
       var reader = new FileReader();

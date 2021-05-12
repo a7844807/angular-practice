@@ -14,8 +14,7 @@
             <tbody formArrayName="items" *ngFor="let group of getFormData.controls; let i=index">
                 <tr [formGroupName]="i">
                     <td>
-                    <img [src]="urlLink" *ngIf="urlLink" class="image">
-                    <input #Image type="file"  (change)="selectFile($event)" class = "imageCell"/>
+                    
                     </td>
                     <td><input type="text" class = "formCell" formControlName="foodName" ></td>
                     <td><input type="text" class = "formCell" formControlName="price" >          </td>
@@ -29,3 +28,5 @@
     </form>
     <button (click)="addUser()" class="btnAdd">Add new</button>
 </div>
+<div><img [src]="urlLink" *ngIf="urlLink" class="image">
+    <input #Image type="file"  (change)="selectFile($event)" class = "imageCell"/></div>
