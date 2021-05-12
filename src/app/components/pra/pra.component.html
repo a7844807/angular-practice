@@ -1,0 +1,39 @@
+<head>{{title}}</head>
+
+<div>
+    <form [formGroup]="itemForm">
+        <table class="table">
+            <thead>
+                <th>菜名</th>
+                <th>价格</th>
+                <th>种类</th>
+                <th>折扣（%）</th>
+                <th>现价</th>
+            </thead>
+            <tbody formArrayName="items" *ngFor="let group of getFormData.controls; let i=index">
+                <tr [formGroupName]="i">
+                    <td class="form-group">
+                        <input type="text" formControlName="foodName" >
+                      </td>
+                      <td class="form-group">
+                        <input type="text" formControlName="price" >          
+                      </td>
+                      <td class="form-group">
+                        <input  type="text" formControlName="type">
+                      </td>
+                      <td class="form-group">
+                        <input #perc type="text" formControlName="discountInPercentage" 
+                    (change)="calculateDiscount(i, perc.value)">
+                      </td>
+                      <td class="form-group">
+                        <input  type="text" formControlName="discountInDollar">
+                      </td>
+                      <td>
+                        <button (click)="remove(i)">Remove</button>
+                      </td>
+                </tr>
+        </table>
+    </form>
+    <button (click)="addUser()" class="btnAdd">Add new</button>
+</div>
+
