@@ -12,9 +12,9 @@ export class PraComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   title = '菜单练习';
-
   items = [
     {
+      image: 'assets/干炒牛河.jpg',
       foodName: '干炒牛河',
       price: 12.8,
       type: '炒面炒饭',
@@ -22,6 +22,7 @@ export class PraComponent implements OnInit {
       discountInDollar: ''
     },
     {
+      image: 'assets/糖醋排骨.jpg',
       foodName: '糖醋排骨',
       price: 10.5,
       type: '猪肉',
@@ -29,21 +30,20 @@ export class PraComponent implements OnInit {
       discountInDollar: ''
     }
   ];
-  fileToUpload: any;
-  imageUrl: any;
+  urlLink: string = 'assets/干炒牛河.jpg';
+  selectFile(event:any){
+    if (event.target.files){
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.file[0]);
+      reader.onload = (_event)=>{
+        this.urlLink = event.target.result;
+      };
+    }
+  }
+
+  // tslint:disable-next-line: member-ordering
 
   itemForm: FormGroup = new FormGroup({});
-
-  handleFileInput(file: FileList) {
-    this.fileToUpload = file.item(0);
-
-    // 图片加载 从文件夹中
-    const reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.imageUrl = event.target.result;
-    };
-    reader.readAsDataURL(this.fileToUpload);
-  }
 
   ngOnInit() {
     this.itemForm = this.fb.group({
@@ -56,6 +56,7 @@ export class PraComponent implements OnInit {
     const control = this.itemForm.get('items') as FormArray;
     for (const item of this.items) {
       const grp = this.fb.group({
+        imageUrl: [item.image],
         foodName: [item.foodName],
         price: [item.price],
         type: [item.type],
@@ -68,6 +69,7 @@ export class PraComponent implements OnInit {
   // 初始化表格
   initiatForm(): FormGroup {
     return this.fb.group({
+      image: [''],
       foodName: [''],
       price: [''],
       type: [''],

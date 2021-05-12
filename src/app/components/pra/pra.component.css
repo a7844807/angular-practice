@@ -4,6 +4,15 @@
 .btnAdd{
     margin-left: 5%;
 }
-.cell{
-    height: 10px;
+.formCell{
+  width: 100px;
+  height: 20px ;
+  max-height: 200px;
+  margin: 2px;
+  border-bottom: 1px solid #ffffff;
+}
+.imageCell{
+    height:120px;
+    max-height: 200px;
+    max-width: 200px;
 }
