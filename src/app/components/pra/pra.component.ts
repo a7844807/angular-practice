@@ -14,7 +14,7 @@ export class PraComponent implements OnInit {
   title = '菜单练习';
   items = [
     {
-      image: 'assets/干炒牛河.jpg',
+      image: '',
       foodName: '干炒牛河',
       price: 12.8,
       type: '炒面炒饭',
@@ -22,7 +22,7 @@ export class PraComponent implements OnInit {
       discountInDollar: ''
     },
     {
-      image: 'assets/糖醋排骨.jpg',
+      image: '',
       foodName: '糖醋排骨',
       price: 10.5,
       type: '猪肉',
@@ -30,7 +30,7 @@ export class PraComponent implements OnInit {
       discountInDollar: ''
     }
   ];
-  urlLink: string = '';
+  urlLink: string = 'assets/干炒牛河.jpg';
   selectFile(event:any){
     if (event.target.files){
       var reader = new FileReader();
